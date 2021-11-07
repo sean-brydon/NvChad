@@ -11,10 +11,10 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- To use this file, copy the structure of `core/default_config.lua`,
 -- examples of setting relative number & changing theme:
 
--- M.options = {
---    relativenumber = true,
--- }
-
+ M.options = {
+    relativenumber = true,
+    tabstop = 2
+ }
 -- M.ui = {
 --   theme = "nord"
 -- }
@@ -22,11 +22,14 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- NvChad included plugin options & overrides
 M.plugins = {
    options = {
+      relativenumber = true,
+      tabstop = 2,
       --   lspconfig = {
       --    path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
       --    setup_lspconf = "",
       --   },
    },
+
    -- To change the Packer `config` of a plugin that comes with NvChad,
    -- add a table entry below matching the plugin github name
    --              '-' -> '_', remove any '.lua', '.nvim' extensions
@@ -36,4 +39,24 @@ M.plugins = {
    default_plugin_config_replace = {},
 }
 
+M.mappings = {
+   close_buffer = "<leader>q",
+   new_buffer = "<leader>nb", -- open a new buffer
+   new_tab = "<leader>nt", -- open a new vim tab
+   save_file = "<leader>w", -- save file using :w
+   terminal = {
+      esc_termmode = { "JK" }, -- multiple mappings allowed
+      pick_term = "<leader>fT",
+      -- below three are for spawning terminals
+      new_horizontal = "<leader>nth",
+      new_vertical = "<leader>ntv",
+      new_window = "<leader>nt",
+   },
+}
+M.mappings.plugins = {
+   nvimtree = {
+      toggle = "<leader>tt",
+      focus = "<leader>e",
+   },
+}
 return M

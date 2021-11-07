@@ -21,22 +21,30 @@ local hooks = require "core.hooks"
 -- you can set one or many mappings
 -- example below:
 
--- hooks.add("setup_mappings", function(map)
---    map("n", "<leader>cc", "gg0vG$d", opt) -- example to delete the buffer
+ hooks.add("setup_mappings", function(map)
+  --  map("n", "<leader>cc", "gg0vG$d", opt) -- example to delete the buffer
 --    .... many more mappings ....
--- end)
+--
+  map("n","<leader>ng","<cmd>FloatermNew lazygit<CR>",opt)
+ end)
 
 -- To add new plugins, use the "install_plugin" hook,
 -- NOTE: we heavily suggest using Packer's lazy loading (with the 'event' field)
 -- see: https://github.com/wbthomason/packer.nvim
 -- examples below:
 
--- hooks.add("install_plugins", function(use)
---    use {
---       "max397574/better-escape.nvim",
---       event = "InsertEnter",
---    }
--- end)
+ hooks.add("install_plugins", function(use)
+   use {
+      "jose-elias-alvarez/null-ls.nvim",
+      after = "nvim-lspconfig",
+      config = function()
+        require("custom.plugin_confs.null-ls").setup()
+      end,
+   }
+   use {
+      "voldikss/vim-floaterm",
+   }
+ end)
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
 -- then source it with
