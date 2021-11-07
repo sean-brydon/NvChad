@@ -26,7 +26,7 @@ choco install mingw
 ```
 
 #### Packer
-Packer will be used to install plugins within nvim
+Packer will be used to install plugins within nvim (run this in git bash)
 ```
 git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
